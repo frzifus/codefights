@@ -212,6 +212,22 @@ func BenchmarkSumInRange(b *testing.B) {
 	}
 }
 
+func TestArrayMaxConsecutiveSum2(t *testing.T) {
+
+}
+
+func BenchmarkArrayMaxConsecutiveSum2(b *testing.B) {
+
+}
+
+func TestFindLongestSubarrayBySum(t *testing.T) {
+
+}
+
+func BenchmarkFindLongestSubarrayBySum(b *testing.B) {
+
+}
+
 // func TestProductExceptSelf(t *testing.T) {
 //	tt := []struct {
 //		name   string
