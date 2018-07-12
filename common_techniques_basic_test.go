@@ -1,6 +1,9 @@
 package codefights
 
-import "testing"
+import (
+	"math/rand"
+	"testing"
+)
 
 func TestContainsDuplicates(t *testing.T) {
 	tt := []struct {
@@ -26,6 +29,15 @@ func TestContainsDuplicates(t *testing.T) {
 				t.Errorf("%s", "")
 			}
 		})
+	}
+}
+
+func BenchmarkContainsDuplicates(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		rnd := rand.Perm(100)
+		b.StartTimer()
+		ContainsDuplicates(rnd)
+		b.StopTimer()
 	}
 }
 
@@ -59,6 +71,17 @@ func TestSumOfTwo(t *testing.T) {
 					tc.a, tc.b, tc.v)
 			}
 		})
+	}
+}
+
+func BenchmarkSumOfTwo(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		x := rand.Perm(100)
+		y := rand.Perm(100)
+		z := 50
+		b.StartTimer()
+		SumOfTwo(x, y, z)
+		b.StopTimer()
 	}
 }
 
@@ -172,6 +195,20 @@ func TestSumInRange(t *testing.T) {
 				t.Errorf("Want: %v, Got: %v", tc.expect, res)
 			}
 		})
+	}
+}
+
+func BenchmarkSumInRange(b *testing.B) {
+	var queries [10][]int
+	for n := 0; n < b.N; n++ {
+		nums := rand.Perm(100)
+		for i := 0; i < 10; i++ {
+			queries[i] = rand.Perm(2)
+			// queries = append(queries, append(queries[i], rand.Perm(2)...))
+		}
+		b.StartTimer()
+		SumInRange(nums, queries[:])
+		b.StopTimer()
 	}
 }
 
