@@ -212,80 +212,80 @@ func BenchmarkSumInRange(b *testing.B) {
 	}
 }
 
-func TestProductExceptSelf(t *testing.T) {
-	tt := []struct {
-		name   string
-		nums   []int
-		m      int
-		expect int
-	}{
-		{"test1", []int{1, 2, 3, 4}, 12, 2},
-		{"test2", []int{2, 100}, 24, 6},
-		{"test3", []int{5, 8, 6, 3, 2}, 8, 4},
-		{"test4", []int{3, 3, 9, 5, 5, 4, 2, 8, 5, 9}, 17, 16},
-		{"test5", []int{
-			27, 37, 47, 30, 17, 6, 20, 17, 21, 43, 5, 49, 49, 50, 20, 42, 45,
-			1, 22, 44,
-		},
-			12,
-			2,
-		},
-		{"test6", []int{28, 27, 11, 17, 19, 49, 19, 46, 41, 21, 1, 49, 18, 26,
-			16, 24, 16, 36, 19, 49, 31, 39, 11, 21, 29, 37, 34, 34, 6, 16, 26,
-			31, 6, 48, 38, 36, 26, 36, 38, 18,
-		},
-			5040,
-			0,
-		},
-		{"test7", []int{52, 40, 2, 78, 49, 70, 39, 26, 58, 58, 52, 93, 80, 64,
-			33, 72, 29, 17, 81, 83, 48, 9, 49, 82, 67, 76, 54, 64, 6, 48, 16,
-			82, 67, 56, 32, 98, 14, 47, 48, 26, 56, 54, 80, 13, 32, 18, 4, 73,
-			45, 65,
-		},
-			530,
-			220,
-		},
-		{"test8", []int{37, 50, 50, 6, 8, 54, 7, 64, 2, 64, 67, 59, 22, 73, 33,
-			53, 43, 77, 56, 76, 59, 96, 64, 100, 89, 38, 64, 73, 85, 96, 65, 50,
-			62, 4, 82, 57, 98, 61, 92, 55, 80, 53, 80, 55, 94, 9, 73, 89, 83,
-			80,
-		},
-			67,
-			55,
-		},
-	}
+// func TestProductExceptSelf(t *testing.T) {
+//	tt := []struct {
+//		name   string
+//		nums   []int
+//		m      int
+//		expect int
+//	}{
+//		{"test1", []int{1, 2, 3, 4}, 12, 2},
+//		{"test2", []int{2, 100}, 24, 6},
+//		{"test3", []int{5, 8, 6, 3, 2}, 8, 4},
+//		{"test4", []int{3, 3, 9, 5, 5, 4, 2, 8, 5, 9}, 17, 16},
+//		{"test5", []int{
+//			27, 37, 47, 30, 17, 6, 20, 17, 21, 43, 5, 49, 49, 50, 20, 42, 45,
+//			1, 22, 44,
+//		},
+//			12,
+//			2,
+//		},
+//		{"test6", []int{28, 27, 11, 17, 19, 49, 19, 46, 41, 21, 1, 49, 18, 26,
+//			16, 24, 16, 36, 19, 49, 31, 39, 11, 21, 29, 37, 34, 34, 6, 16, 26,
+//			31, 6, 48, 38, 36, 26, 36, 38, 18,
+//		},
+//			5040,
+//			0,
+//		},
+//		{"test7", []int{52, 40, 2, 78, 49, 70, 39, 26, 58, 58, 52, 93, 80, 64,
+//			33, 72, 29, 17, 81, 83, 48, 9, 49, 82, 67, 76, 54, 64, 6, 48, 16,
+//			82, 67, 56, 32, 98, 14, 47, 48, 26, 56, 54, 80, 13, 32, 18, 4, 73,
+//			45, 65,
+//		},
+//			530,
+//			220,
+//		},
+//		{"test8", []int{37, 50, 50, 6, 8, 54, 7, 64, 2, 64, 67, 59, 22, 73, 33,
+//			53, 43, 77, 56, 76, 59, 96, 64, 100, 89, 38, 64, 73, 85, 96, 65, 50,
+//			62, 4, 82, 57, 98, 61, 92, 55, 80, 53, 80, 55, 94, 9, 73, 89, 83,
+//			80,
+//		},
+//			67,
+//			55,
+//		},
+//	}
 
-	for _, tc := range tt {
-		t.Run(tc.name, func(t *testing.T) {
-			res := ProductExceptSelf(tc.nums, tc.m)
-			if res != tc.expect {
-				t.Errorf("Want: %v, Got: %v", tc.expect, res)
-			}
-		})
-	}
-}
+//	for _, tc := range tt {
+//		t.Run(tc.name, func(t *testing.T) {
+//			res := ProductExceptSelf(tc.nums, tc.m)
+//			if res != tc.expect {
+//				t.Errorf("Want: %v, Got: %v", tc.expect, res)
+//			}
+//		})
+//	}
+// }
 
-func TestMinSubstringWithAllChars(t *testing.T) {
-	tt := []struct {
-		name   string
-		s      string
-		t      string
-		expect string
-	}{
-		{"test1", "adobecodebanc", "abc", "banc"},
-		{"test2", "", "", ""},
-		{"test3", "abz", "abz", "abz"},
-		{"test4", "zqyvbfeiee", "ze", "zqyvbfe"},
-		{"test5", "tvdsxcqsnoeccaurocnk", "acpt", "tvdsxcqsnoecca"},
-		{"test6", "xgajymplpvftjwjqomhbnutorgysaf", "j", "j"},
-	}
+// func TestMinSubstringWithAllChars(t *testing.T) {
+//	tt := []struct {
+//		name   string
+//		s      string
+//		t      string
+//		expect string
+//	}{
+//		{"test1", "adobecodebanc", "abc", "banc"},
+//		{"test2", "", "", ""},
+//		{"test3", "abz", "abz", "abz"},
+//		{"test4", "zqyvbfeiee", "ze", "zqyvbfe"},
+//		{"test5", "tvdsxcqsnoeccaurocnk", "acpt", "tvdsxcqsnoecca"},
+//		{"test6", "xgajymplpvftjwjqomhbnutorgysaf", "j", "j"},
+//	}
 
-	for _, tc := range tt {
-		t.Run(tc.name, func(t *testing.T) {
-			res := MinSubstringWithAllChars(tc.s, tc.t)
-			if res != tc.expect {
-				t.Errorf("Want: %v, Got: %v", tc.expect, res)
-			}
-		})
-	}
-}
+//	for _, tc := range tt {
+//		t.Run(tc.name, func(t *testing.T) {
+//			res := MinSubstringWithAllChars(tc.s, tc.t)
+//			if res != tc.expect {
+//				t.Errorf("Want: %v, Got: %v", tc.expect, res)
+//			}
+//		})
+//	}
+// }
